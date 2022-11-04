@@ -1,7 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <title>Hi, I'm Danny</title>
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/summary-blocks.css">
+</head>
+  
 <body>
-    <h1>Hello World</h1>
-    <p>Science and Programming</p>
+<header class="header">
+  <div class="header-menu-flexbox">
+    <img class="icon-hamburger-menu" src="assets/icons/hamburger-64.png">
+  </div>
+  <div class="header-name-container">
+    <p class="header-name">
+      Hi, My Name is Danny
+    </p>
+  </div>
+  <div class="header-links-flexbox">
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dannyhavert/">
+      <img class="icon-sm" src="assets/icons/linkedin_icon.png" alt="in">
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/djhavert">
+    <img class="icon-sm" src="assets/icons/github-64.png" alt="GH">
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/dannyhavert">
+    <img class="icon-sm" src="assets/icons/facebook-58.png" alt="FB">
+    </a>
+  </div>
+</header>
+
+
+<!-- PROJECTS -->
+<section class="block-left-container">
+  <h1 class=content-block-left-h1>
+    Projects
+  </h1>
+
+
+  <!-- PROJECTS: 512 LIVEVIEW -->
+  <div class="summary-block-left">
+    <div class="summary-block-left-writing">
+      <h2 class="summary-block-left-h2">
+        512 LiveView
+      </h2>
+
+      <h3 class="summary-block-left-h3">
+        <u>Description</u>
+      </h3>
+      <p class="summary-block-left-p">
+        My PhD research involves recording electrical signals from brain slices on a Multi-electrode array.
+        The array we use has 512 electrodes, each recording voltage at a sample rate of 20,000 Hz.
+        We record from a single slice for 3 hours, and while we eventually do a much more in depth analysis of the data, it is extrememly important to see details about the neural activity live during a recording.
+        In order to see these details in a concise manner, I wrote a program in C++ that receives the data, runs analysis, and displays the live results of the analysis in two graphical windows.
+      </p>
+      <p class="summary-block-left-p">
+        This is a very long description of the project that I will eventually 
+        fill in eventually. Currently I want to focus on setting up the layout
+        of the page right now instead of focusing on the actual content. 
+        Wow this has really gone on long but I need to put a lot of stuff here 
+        to test the width, height, padding, margin, etc.
+      </p>
+
+      <h3 class="summary-block-left-h3">
+        <u>Front-End Features</u>
+      </h3>
+      <ul class="summary-block-left-ul">
+        <li>Oscilliscope
+          <ul>
+            <li>Displays the raw voltage signal from a single channel.</li>
+            <li>Change channels up or down with a click of a button, or input any channel to instantly change the display.</li>
+            <li>Pause the screen on the current channel and zoom in to see spike waveforms.</li>
+          </ul>
+        </li>
+        <li>Spike Summary
+          <ul>
+            <li>Background squares correspond to the grid of all 512 electrodes.</li>
+            <li>Any neuronal spikes that occur near an electrode will be detected in the analysis step and then displayed as a dot over the electrode it was found on.</li>
+            <li>The size of the dot represents the amplitude of the spike detected, and hence the distance from the electrode. Larger dots represent spikes occuring very close to an electrode.</li>
+            <li>This window is extremely useful in determining where a slice is most active, which in turn helps us decide which electrodes to observe in the oscilliscope window, and which electrodes would be the most effective sites for electrical stimulation.</li>
+          </ul>
+        </li>
+        <li> Post Stimulus Time Histogram (PSTH)
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="summary-block-left-h3">
+        <u>Back-End Features</u>
+      </h3>
+      <ul class="summary-block-left-ul">
+        <li>Client-Server
+          <ul>
+            <li>The data comes into the recording computer via a National Instruments chip. A server is created on this chip and the raw data is compressed and sent out via network in arbitrarily sized chunks. </li>
+            <li>My program sets up both a client and server to communicate with the chip. The client receives and unpacks the data sent from the chip. The server sends commands like 'start' and 'stop' back to the chip.</li>
+            <li>The electrode array is recording and sending raw data at a rate of 20 MB/s. This data needs to be parsed and analyzed in real time.</li>
+            <li>All data received from the electrode array is placed in a data buffer that grows and shrinks as needed.</li>
+          </ul>
+        </li>
+        <li>Spike Detection
+          <ul>
+            <li>A running average and deviation threshold are calculated for each channel. These two values can be seen in the oscilliscope panel as horizontal lines.</li>
+            <li>If the raw voltage on any electrode passes below the calculated threshold for a length of time between 0.3 and 3 ms without coming back above the threshold, then the software registers that a spike has occured on that electrode.</li>
+            <li>Resgistered spikes are saved and displayed on the Spike Summary window</li>
+          </ul>
+        </li>
+        <li>Stimulation</li>
+          <ul>
+            <li>Stimulation on the electrode array is input through a precompiled binary file that includes all the stimulation instructions.</li>
+            <li>The user has the option to feed the stimulation binary file into this software as well. The software will keep track of any spikes that occur in a given period after each stimulus.</li>
+            <li>This is useful to see live feedback of the effects of stimulation. Frequently we </li>
+          </ul>
+      </ul>
+    </div> 
+    <div class="summary-block-left-images">
+      <div class="image-container">
+        <img class="samplegif" src="assets/gifs/Oscilliscope.gif" width=400px alt="OscilliscopeGif">
+      </div>
+      <div class="image-container">
+        <img class="samplegif" src="assets/gifs/SpikeSummary.gif" width=600px alt="SpikeSummaryGif">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- PROJECTS: UNITY VIDEO GAME -->
+  <div class="summary-block-left">
+    <div class="summary-block-left-writing">
+      <h2 class="summary-block-left-h2">
+        Unity Video Game
+      </h2>
+      <h3 class="summary-block-left-h3">
+        <u>Description</u>
+      </h3>
+      <p class="summary-block-left-p">
+        This is a very long description of the project that I will eventually 
+        fill in eventually. Currently I want to focus on setting up the layout
+        of the page right now instead of focusing on the actual content. 
+        Wow this has really gone on long but I need to put a lot of stuff here 
+        to test the width, height, padding, margin, etc.
+      </p>
+      <p class="summary-block-left-p">
+        This is a very long description of the project that I will eventually 
+        fill in eventually. Currently I want to focus on setting up the layout
+        of the page right now instead of focusing on the actual content. 
+        Wow this has really gone on long but I need to put a lot of stuff here 
+        to test the width, height, padding, margin, etc.
+      </p>
+      <h3 class="summary-block-left-h3">
+        <u>Features</u>
+      </h3>
+      <ul class="summary-block-left-ul">
+        <li>First Feature</li>
+        <li>Second Feature</li>
+        <li>Third Feature</li>
+      </ul>
+    </div> 
+    <div class="summary-block-left-images">
+      <div class="image-container">
+        <img class="samplegif" src="assets/gifs/Oscilliscope.gif" width=400px alt="OscilliscopeGif">
+      </div>
+      <div class="image-container">
+        <img class="samplegif" src="assets/gifs/SpikeSummary.gif" width=600px alt="SpikeSummaryGif">
+      </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="block-left-container">
+  <h1 class=content-block-left-h1>
+    Education/Experience
+  </h1>
+
+  <div class="summary-block-left">
+    <h2 class="summary-block-left-h2">
+      PhD in Physics
+    </h2>
+  </div>
+
+  <div class="summary-block-left">
+    <h2 class="summary-block-left-h2">
+      BS in Space Physics
+    </h2>
+  </div>
+  
+</section>
+
+<!-- ABOUT ME -->
+<section class="block-left-container">
+  <h1 class=content-block-left-h1>
+    About Me
+  </h1>
+
+  <div class="summary-block-left">
+    <div class="summary-block-left-writing">
+      <p class="summary-block-left-p">
+        My name is Danny. I am currently a PhD student studying the effects of stimulation on the cortical region of rat brain slices.
+        Specifically, my interest lies in exploring the efficacy of a brain slice to perform as a resoivor computer in pattern recognition tasks.
+      </p>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
+
