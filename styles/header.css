@@ -1,10 +1,12 @@
 .header {
-  background-color:rgb(253, 253, 237);
+  background-color:#9dd0e2;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
-  height: 120px;
+  height: 150px;
+  border-bottom: 5px rgb(168, 189, 209) solid;
+  border-radius: 5px;
 }
 
 .header-menu-flexbox {
@@ -21,7 +23,7 @@
   padding-left: 20px;
   padding-right: 50px;
   max-width: 800px;
-  min-width: 222px;
+  min-width: 150px;
 }
 
 .header-links-flexbox {
@@ -40,7 +42,7 @@
   margin: 0;
   padding-bottom: 5px;
   padding-top: 20px;
-  font-size: 40px;
+  font-size: 60px;
   text-align: left;
   vertical-align: bottom;
 }
