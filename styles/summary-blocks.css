@@ -96,3 +96,28 @@ ul > li {
   padding-top: 4px;
 }
 
+.edu-info {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.icon-links-flexbox {
+  display: flex ;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  margin-right: 20px;
+  margin-left: 40px;
+  flex-shrink: 0;
+}
+
+.lang-list {
+
+}
+
+.lang-item {
+  
+}
