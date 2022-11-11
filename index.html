@@ -39,88 +39,121 @@
 
 
   <!-- PROJECTS: 512 LIVEVIEW -->
-  <div class="summary-block-left">
-    <div class="summary-block-left-writing">
-      <h2 class="summary-block-left-h2">
-        512 LiveView
-      </h2>
+  <div class="summary-block-left-proj">
+    <div class="summary-block-left-proj-cont">
+      <div class="summary-block-left-writing">
+        <h2 class="summary-block-left-h2">
+          512 LiveView
+        </h2>
 
-      <h3 class="summary-block-left-h3">
-        <u>Description</u>
-      </h3>
-      <p class="summary-block-left-p">
-        My PhD research involves recording electrical signals from brain slices on a Multi-electrode array.
-        The array we use has 512 electrodes, each recording voltage at a sample rate of 20,000 Hz.
-        We record from a single slice for 3 hours, and while we eventually do a much more in depth analysis of the data, it is extrememly important to see details about the neural activity live during a recording.
-        In order to see these details in a concise manner, I wrote a program in C++ that receives the data, runs analysis, and displays the live results of the analysis in multiple graphical windows.
-      </p>
-      <p class="summary-block-left-p">
-        
-      </p>
-
-      <h3 class="summary-block-left-h3">
-        <u>Front-End Features</u>
-      </h3>
-      <ul class="summary-block-left-ul">
-        <li class = "feature-list-li-1">Oscilliscope
-          <ul class = "feature-list-ul-2">
-            <li>Displays the raw voltage signal from a single channel.</li>
-            <li>Change channels up or down with a click of a button, or input any channel to instantly change the display.</li>
-            <li>Pause the screen on the current channel and zoom in to see spike waveforms.</li>
+        <h3 class="summary-block-left-h3">
+          <u>Description</u>
+        </h3>
+        <p class="summary-block-left-p">
+          This project was coded 100% by me from scratch in C++. 
+          It is extremely efficient, capable of running analysis on 20 MB of data per second, 
+          and displaying the results of that analysis live in multiple graphical windows.
+          My PhD research involves recording electrical signals from brain slices on a Multi-electrode array.
+          We record from 512 electrodes at 20,000 Hz, culminating in a data rate of 1.2 GB per minute.
+          This enormous amount of data needs to be displayed live to the user in an easily readable way. 
+          The purpose of this software is to provide an open-source application that quickly and clearly displays the data in easy to read visualizations.
+        </p>
+        <p class="summary-block-left-p">
+          We used a different software in the past, but found it's functionalilty to be inadequate for two reasons. 
+          <ul class = summary-block-left-ul>
+            <li>
+              The first reason was that the graphical interface only updated once a second.
+              My software on the other hand, updates its graphical interface every frame, providing a much clearer picture of where bursts of activity originate and travel to.
+            </li>
+            <li>
+              The other factor was the need for additional features as our research became more complicated. 
+              The old software was closed-source and abandoned.
+              By creating a new software from scratch, I could add any new features our lab wanted and make the code open-source so future researchers could modify the code to their own needs. 
+              For example, the old software did not have any knowledge about stimulation pulses given to the electrode array. 
+              The new software is capable of removing stimulation artifacts and generating plots related to the stimulation-driven activity.
+            </li>
           </ul>
-        </li>
-        <li class = "feature-list-li-1"> Spike Summary
-          <ul class = "feature-list-ul-2">
-            <li>Background squares correspond to the grid of all 512 electrodes.</li>
-            <li>Any neuronal spikes that occur near an electrode will be detected in the analysis step and then displayed as a dot over the electrode it was found on.</li>
-            <li>The size of the dot represents the amplitude of the spike detected, and hence the distance from the electrode. Larger dots represent spikes occuring very close to an electrode.</li>
-            <li>This window is extremely useful in determining where a slice is most active, which in turn helps us decide which electrodes to observe in the oscilliscope window, and which electrodes would be the most effective sites for electrical stimulation.</li>
-          </ul>
-        </li>
-        <li class = "feature-list-li-1"> Post Stimulus Time Histogram (PSTH)
-          <ul class = "feature-list-ul-2">
-            <li>Visualize spiking activity as a direct result of stimulation.</li>
-            <li>Select from list of stimulated channels to see histogram of post stimulus spike times collected from all stimulation pulses given on the selected channel.</li>
-            <li>Use the live PSTH plots to plan which electrodes to choose for your next stimulation experiment.</li>
-          </ul>
-        </li>
-      </ul>
-
-      <h3 class="summary-block-left-h3">
-        <u>Back-End Features</u>
-      </h3>
-      <ul class="summary-block-left-ul">
-        <li class = "feature-list-li-1">Client-Server
-          <ul class = "feature-list-ul-2">
-            <li>The data comes into the recording computer via a National Instruments chip. A server is created on this chip and the raw data is compressed and sent out via network in arbitrarily sized chunks. </li>
-            <li>My program sets up both a client and server to communicate with the chip. The client receives and unpacks the data sent from the chip. The server sends commands like 'start' and 'stop' back to the chip.</li>
-            <li>The electrode array is recording and sending raw data at a rate of 20 MB/s. This data needs to be parsed and analyzed in real time.</li>
-            <li>All data received from the electrode array is placed in a data buffer that grows and shrinks as needed.</li>
-          </ul>
-        </li>
-        <li class = "feature-list-li-1">Spike Detection
-          <ul class = "feature-list-ul-2">
-            <li>A running average and deviation threshold are calculated for each channel. These two values can be seen in the oscilliscope panel as horizontal lines.</li>
-            <li>If the raw voltage on any electrode passes below the calculated threshold for a length of time between 0.3 and 3 ms without coming back above the threshold, then the software registers that a spike has occured on that electrode.</li>
-            <li>Resgistered spikes are saved and displayed on the Spike Summary window</li>
-          </ul>
-        </li>
-        <li class = "feature-list-li-1">Stimulation</li>
-          <ul class = "feature-list-ul-2">
-            <li>Stimulation on the electrode array is input through a precompiled binary file that includes all the stimulation instructions.</li>
-            <li>The user has the option to feed the stimulation binary file into this software as well. The software will keep track of any spikes that occur in a given period after each stimulus.</li>
-            <li>This is useful to see live feedback of the effects of stimulation. Frequently we run an 'electrode-scan' protocol, which gives several stim pulses on many channels, to determine which electrodes when stimulated consistently drive the network. </li>
-          </ul>
-      </ul>
-    </div> 
-    <div class="summary-block-left-images">
-      <div class="image-container">
-        <img class="samplegif" src="assets/gifs/Oscilliscope.gif" width=400px alt="OscilliscopeGif">
+        </p>
       </div>
-      <div class="image-container">
-        <img class="samplegif" src="assets/gifs/SpikeSummary.gif" width=600px alt="SpikeSummaryGif">
+      <div class="summary-block-left-images">
+        <div class="image-container">
+          <img class="samplegif" src="assets/gifs/Oscilliscope.gif" width=600px alt="OscilliscopeGif">
+        </div>
       </div>
     </div>
+
+    <div class="summary-block-left-proj-cont">
+      <div class="summary-block-left-writing">
+        <h3 class="summary-block-left-h3">
+          <u>Front-End Features</u>
+        </h3>
+        <ul class="summary-block-left-ul">
+          <li class = "feature-list-li-1">Oscilliscope
+            <ul class = "feature-list-ul-2">
+              <li>Displays the signal from a single channel, updating in real time.</li>
+              <li>Change to neighboring channels with a click of a button, or input any channel number to instantly change the display.</li>
+              <li>Pause the screen on the current channel and zoom in to see spike waveforms.</li>
+            </ul>
+          </li>
+          <li class = "feature-list-li-1"> Spike Summary
+            <ul class = "feature-list-ul-2">
+              <li>Shows location of spiking neurons over the electrode map.</li>
+              <li>The size of the dot represents the amplitude of the spike detected, and hence the distance from the electrode. Larger dots represent spikes occuring very close to an electrode.</li>
+              <li>This window is extremely useful in determining where a slice is most active, which in turn helps us decide which electrodes to observe in the oscilliscope window, and which electrodes would be the most effective sites for electrical stimulation.</li>
+            </ul>
+          </li>
+          <li class = "feature-list-li-1"> Stimulation & Post Stimulus Time Histogram (PSTH)
+            <ul class = "feature-list-ul-2">
+              <li>Ability to supply a stimulation file and see the immediate effects of stimulation.</li>
+              <li>In the PSTH window, visualize spiking activity as a direct result of stimulation.</li>
+              <li>Use the live PSTH plots to plan which electrodes to choose for your next stimulation experiment.</li>
+              <li>This feature is new and extremely useful as it allows us to immediately see the effects of stimulation. Previously we had to wait until we analyzed the data on a separate more powerful computer to see these effects.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="summary-block-left-images">
+        <div class="image-container">
+          <img class="samplegif" src="assets/gifs/SpikeSummary.gif" width=800px alt="SpikeSummaryGif">
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block-left-proj-cont">
+      <div class="summary-block-left-writing">
+        <h3 class="summary-block-left-h3">
+          <u>Back-End Features</u>
+        </h3>
+        <p class="summary-block-left-p">
+          <b>Multithreaded:</b> The application is split up to run three distinct loops main loops on three separate threads.
+        </p>
+        <ul class="summary-block-left-ul">
+          <li class = "feature-list-li-1">Client-Server Thread
+            <ul class = "feature-list-ul-2">
+              <li>The data enters the recording computer via a National Instruments chip running custom LabVIEW software. A server is created by this software and the raw data is compressed and sent out via network in arbitrarily sized chunks. </li>
+              <li>My application sets up both a client and server to communicate with the chip. The client continuously receives and unpacks the data sent from the chip. The server sends commands like 'start' and 'stop' back to the chip.</li>
+              <li>All data received from the electrode array is placed in a data buffer that grows and shrinks as needed.</li>
+            </ul>
+          </li>
+          <li class = "feature-list-li-1">Analysis Thread
+            <ul class = "feature-list-ul-2">
+              <li>The primary reason for choosing C++ for this application is that it is extremely fast and efficient.</li>
+              <li>The first hurdle in electrode array recordings of neurons is identifying spikes in the raw voltage signals. Spikes come in many different shapes, sizes, and durations, and identifying them can be extremely computationaly expensive.</li>
+              <li>We receive data from 512 channels at a rate of 20 MB/s. This data needs to be combed through in real time, matching raw data to typical spike waveforms and ultimately identifying when and where spikes occur.</li>
+              <li>Identified spikes are registered and displayed in the Spike Summary window as dots varying in size and opacity.</li>
+              <li>If a stimulation file was supplied, the application keeps track of when these events occur, and automatically filters out the massive artifacts caused by the stimulation pulses.</li>
+            </ul>
+          </li>
+          <li class = "feature-list-li-1">Graphics Thread</li>
+            <ul class = "feature-list-ul-2">
+              <li>The application is being displayed to Windows through the use of GLFW and OpenGL.</li>
+              <li>The GUI is made using Dear ImGUI, an open-source library made for C++ that is extremely fast and efficient due to its implementation of the Immediate Mode GUI paradigm.</li>
+              <li>Performance is steady, but the user can easily minimized any unused windows to boost performance.</li>
+              <li>It is extremely easy for future researchers to add more features and windows to this application.</li>
+            </ul>
+        </ul>
+      </div>
+    </div> 
   </div>
 
 
@@ -231,7 +264,7 @@
         </div>
       </div>
       
-      <div class="summary-block-left-images">
+      <div class="summary-block-left-lang">
         <div class="summary-block-left-writing">
           <h2 class="summary-block-left-h2">
             Languages
@@ -381,7 +414,7 @@
     <div class="summary-block-left-writing">
       <p class="summary-block-left-p">
         My name is Danny. I am currently a PhD student studying the effects of stimulation on the cortical region of rat brain slices.
-        Specifically, my research lies in exploring the efficacy of using a brain slice as a resoivor computer in pattern recognition tasks.
+        Specifically, my research lies in exploring the efficacy of using a brain slice as a reservoir computer in pattern recognition tasks.
         I have great passion for both Science and Programming, and
         I especially enjoy writing software to assist in scientific analysis.
         
@@ -395,9 +428,11 @@
       <p class="summary-block-left-p">
         In grad school I never stopped programming. When I joined the lab, we were recording hundreds of gigabytes of data a day, but the analysis of that data took very long and was extremely cumbersome.
         I created a pipeline for the many different and complicated analysis tools we use, then wrote the necessary scripts to run this pipeline on the university supercomputers.
-        Now everyone in the lab uses my pipeline and the time needed to run analysis on our data has been reduced from weeks to hours.
-        I found myself loving the process of creating software tools for others to use. 
-        I preferred programming over collecting and analyzing data or reading scientific papers.
+        Now everyone in the lab uses my pipeline and the time needed to run analysis on our data has been reduced from weeks to hours. 
+        I also created 512LiveView, detailed above, which has helped to future proof our lab by replacing old deprecated software with an open-source alternative that already has extra features compared to the old software, and can be added on to by future members of the lab.
+      </p>
+      <p class="summary-block-left-p">
+        I love creating software that improves the workflow for others and contributes to the mission of the group I am part of. I hope to create a career out of my passion. If you are interested in a skilled programmer with great problem solving skills and a rich yet diverse educational background, please reach out to me.
       </p>
       <h3 class="summary-block-left-h3">
         <u>Contact Me</u>
