@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Danny Haver Portfolio</title>
+  <title>Danny Havert Portfolio</title>
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/summary-blocks.css">
@@ -9,17 +9,39 @@
 </head>
 
 <script>
-  function addDirectory() {
-
+  function toggleDirectory() {
+    var x = document.getElementById("header-directory");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
   }
 </script>
 
 <body>
 <header class="header">
   <div class="header-menu-flexbox">
-    <button onclick="addDirectory()">
+    <button class="hamburger-button" onclick="toggleDirectory()">
       <img class="icon-hamburger-menu" src="assets/icons/hamburger-64.png">
     </button>
+    <div class="header-directory" id="header-directory">
+      <div class="dir-list-item">
+        <button onclick="toggleDirectory()">
+          <a href="#Programming" rel="bookmark">Programming</a>
+        </button>
+      </div>
+      <div class="dir-list-item">
+        <button onclick="toggleDirectory()">
+          <a href="#Education" rel="bookmark">Education & Experience</a>
+        </button>
+      </div>
+      <div class="dir-list-item">
+        <button onclick="toggleDirectory()">
+          <a href="#About Me" rel="bookmark">About Me</a>
+        </button>
+      </div>
+    </div>
   </div>
   <div class="header-name-container">
     <p class="header-name">
@@ -42,7 +64,7 @@
 
 <!-- PROJECTS -->
 <section class="block-left-container">
-  <h1 class=content-block-left-h1>
+  <h1 class=content-block-left-h1 id="Programming">
     Programming
   </h1>
 
@@ -207,7 +229,7 @@
 
 <!-- EDUCATION/EXPERIENCE/LANGUAGES -->
 <section class="block-left-container">
-  <h1 class=content-block-left-h1>
+  <h1 class=content-block-left-h1 id="Education">
     Education/Experience
   </h1>
   <div>
@@ -301,57 +323,63 @@
 
 <!-- ABOUT ME -->
 <section class="block-left-container">
-  <h1 class=content-block-left-h1>
+  <h1 class=content-block-left-h1 id="About Me">
     About Me
   </h1>
 
-  <div class="summary-block-left">
-    <div class="summary-block-left-writing">
-      <p class="summary-block-left-p">
-        My name is Danny. I am currently a PhD student studying the effects of stimulation on the cortical region of rat brain slices.
-        Specifically, my research lies in exploring the efficacy of using a brain slice as a reservoir computer in pattern recognition tasks.
-        I have great passion for both Science and Programming, and
-        I especially enjoy writing software to assist in scientific analysis.
-        
+  <div class="summary-block-left-proj">
+    <div class="summary-block-left-proj-cont">
+      <div class="summary-block-left-writing">
+        <p class="summary-block-left-p">
+          My name is Danny. I am currently a PhD student studying the effects of stimulation on the cortical region of rat brain slices.
+          Specifically, my research lies in exploring the efficacy of using a brain slice as a reservoir computer in pattern recognition tasks.
+          I have great passion for both Science and Programming, and
+          I especially enjoy writing software to assist in scientific analysis.
+          
 
-      </p>
-      <p class="summary-block-left-p">
-        My first programming class was Introduction to C, taken during the summer between my first 2 years as an undergrad.
-        C is certaintly cumbersome, but I loved programming so much I took an Object Oriented Programming in C++ class a couple years later.
-        That was when I knew I wanted to pursue a career in software one day. 
-        I still had a passion in science though, so I decided to go for my PhD in Physics.
-      <p class="summary-block-left-p">
-        In grad school I never stopped programming. When I joined the lab, we were recording hundreds of gigabytes of data a day, but the analysis of that data took very long and was extremely cumbersome.
-        I created a pipeline for the many different and complicated analysis tools we use, then wrote the necessary scripts to run this pipeline on the university supercomputers.
-        Now everyone in the lab uses my pipeline and the time needed to run analysis on our data has been reduced from weeks to hours. 
-        I also created 512LiveView, detailed above, which has helped to future proof our lab by replacing old deprecated software with an open-source alternative that already has extra features compared to the old software, and can be added on to by future members of the lab.
-      </p>
-      <p class="summary-block-left-p">
-        I love creating software that improves the workflow for others and contributes to the mission of the group I am part of. I hope to create a career out of my passion. If you are interested in a skilled programmer with great problem solving skills and a rich yet diverse educational background, please reach out to me.
-      </p>
+        </p>
+        <p class="summary-block-left-p">
+          My first programming class was Introduction to C, taken during the summer between my first 2 years as an undergrad.
+          C is certaintly cumbersome, but I loved programming so much I took an Object Oriented Programming in C++ class a couple years later.
+          That was when I knew I wanted to pursue a career in software one day. 
+          I still had a passion in science though, so I decided to go for my PhD in Physics.
+        <p class="summary-block-left-p">
+          In grad school I never stopped programming. When I joined the lab, we were recording hundreds of gigabytes of data a day, but the analysis of that data took very long and was extremely cumbersome.
+          I created a pipeline for the many different and complicated analysis tools we use, then wrote the necessary scripts to run this pipeline on the university supercomputers.
+          Now everyone in the lab uses my pipeline and the time needed to run analysis on our data has been reduced from weeks to hours. 
+          I also created 512LiveView, detailed above, which has helped to future proof our lab by replacing old deprecated software with an open-source alternative that already has extra features compared to the old software, and can be added on to by future members of the lab.
+        </p>
+        <p class="summary-block-left-p">
+          I love creating software that improves the workflow for others and contributes to the mission of the group I am part of. I hope to create a career out of my passion. If you are interested in a skilled programmer with great problem solving skills and a rich yet diverse educational background, please reach out to me.
+        </p>
+      </div>
+
+      <div class="summary-block-left-images">
+        <div class="image-container">
+          <img class="samplegif" src="assets/img/park-beanie_full.jpg" width=400px alt="image-ME">
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block-left-proj-cont">
+      <div class="summary-block-left-writing">
       <h3 class="summary-block-left-h3">
         <u>Contact Me</u>
       </h3>
       <p class="summary-block-left-p">
         Email: <a href="mailto:dannyhavert13@gmail.com">dannyhavert13@gmail.com</a>
-
       </p>
-      <div class="icon-links-flexbox">
-      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dannyhavert/">
-        <img class="icon-sm" src="assets/icons/linkedin_icon.png" alt="in">
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/djhavert">
-      <img class="icon-sm" src="assets/icons/github-64.png" alt="GH">
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/dannyhavert">
-      <img class="icon-sm" src="assets/icons/facebook-58.png" alt="FB">
-      </a>
-      </div>
-    </div>
-
-    <div class="summary-block-left-images">
-      <div class="image-container">
-        <img class="samplegif" src="assets/img/park-beanie_full.jpg" width=400px alt="image-ME">
+        <div class="icon-links-flexbox">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dannyhavert/">
+            <img class="icon-sm" src="assets/icons/linkedin_icon.png" alt="in">
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/djhavert">
+          <img class="icon-sm" src="assets/icons/github-64.png" alt="GH">
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/dannyhavert">
+          <img class="icon-sm" src="assets/icons/facebook-58.png" alt="FB">
+          </a>
+        </div>
       </div>
     </div>
   </div>
