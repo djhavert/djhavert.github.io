@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hi, I'm Danny</title>
+  <title>Danny Haver Portfolio</title>
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/summary-blocks.css">
+  <script type="text/javascript" src="scripts/RatingList.js" async></script> 
 </head>
-  
+
+<script>
+  function addDirectory() {
+
+  }
+</script>
+
 <body>
 <header class="header">
   <div class="header-menu-flexbox">
-    <img class="icon-hamburger-menu" src="assets/icons/hamburger-64.png">
+    <button onclick="addDirectory()">
+      <img class="icon-hamburger-menu" src="assets/icons/hamburger-64.png">
+    </button>
   </div>
   <div class="header-name-container">
     <p class="header-name">
@@ -196,7 +205,7 @@
 <!-- Languages -->
 
 
-<!-- EDUCATION -->
+<!-- EDUCATION/EXPERIENCE/LANGUAGES -->
 <section class="block-left-container">
   <h1 class=content-block-left-h1>
     Education/Experience
@@ -269,139 +278,25 @@
           <h2 class="summary-block-left-h2">
             Languages
           </h2>
-          <div class="lang-list"> 
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>C++</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>MATLAB</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>Python</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>HTML5</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>CSS</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>Bash</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>Git</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>C#</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>LaTeX</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
-            <div class="lang-item">
-              <div class="lang-name">
-                <p>LabVIEW</p>
-              </div>
-              <div class="lang-rating">
-                <span class="filled-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-                <span class="empty-rating"></span>
-              </div>
-            </div>
+          <div class="lang-list" id="lang-list"> 
+            <script scr="scripts/ratings.js">
+              const rating_list = new RatingList();
+              rating_list.add('C++',4);
+              rating_list.add('Matlab',5);
+              rating_list.add('Python',3);
+              rating_list.add('HTML5',3);
+              rating_list.add('CSS',3);
+              rating_list.add('Javascript',2);
+              rating_list.add('Bash',4);
+              rating_list.add('Git',3);
+              rating_list.add('C#',2);
+              rating_list.add('LaTeX',3);
+              rating_list.add('LabVIEW',1);
+            </script>
           </div>
         </div>
       </div>
-
     </div>
-    
-    
-
-  
-
-  
-  
 </section>
 
 <!-- ABOUT ME -->
